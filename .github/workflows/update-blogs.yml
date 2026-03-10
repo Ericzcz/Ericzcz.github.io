@@ -1,0 +1,20 @@
+name: Node.js CI
+on: [push] # 当代码推送时触发
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest # 使用 Ubuntu 最新版虚拟机
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # 拉取代码到 Runner
+ 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # 指定 Node.js 版本
+ 
+      - name: Install dependencies
+        run: npm install # 运行 Shell 命令安装依赖
+ 
+      - name: Run tests
+        run: npm test # 运行测试脚本
